@@ -13,7 +13,7 @@ public class WeatherService {
     private final RestTemplate restTemplate;
 
     public WeatherResponse getWeather(){
-        String url = "https://weatherapi.com";
+        String url = "ссылочка";
         ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(url, WeatherResponse.class);
 
         if (response.getStatusCode() != HttpStatus.OK) {
