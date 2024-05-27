@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/weather")
@@ -20,14 +21,25 @@ public class Weather {
 
     @GetMapping("/now/{location}")
     public String now(@PathVariable String location) {
-        String apiUrl = weatherConstants.apiUrl + "/current.json?q=" + location;
+
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(weatherConstants.apiUrl);
+        uriBuilder.path("/current.json");
+        uriBuilder.queryParam("q", location);
+        uriBuilder.queryParam("key", weatherConstants.apiKey);
+        String apiUrl = uriBuilder.build().toUriString();
 
         return getWeatherData(apiUrl);
     }
 
     @GetMapping("/forecast/{location}/{days}")
     public String forecast(@PathVariable String location, @PathVariable int days) {
-        String apiUrl = weatherConstants.apiUrl + "/forecast.json?q=" + location + "&days=" + days;
+
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(weatherConstants.apiUrl);
+        uriBuilder.path("/forecast.json");
+        uriBuilder.queryParam("q", location);
+        uriBuilder.queryParam("days", days);
+        uriBuilder.queryParam("key", weatherConstants.apiKey);
+        String apiUrl = uriBuilder.build().toUriString();
 
         return getWeatherData(apiUrl);
     }
