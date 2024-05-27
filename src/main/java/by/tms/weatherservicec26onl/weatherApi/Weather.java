@@ -12,27 +12,24 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/weather")
 public class Weather {
 
+    private String getWeatherData(String url) {
+        RestTemplate restTemplate = new RestTemplate();
+        String apiUrl = url + "&key=" + weatherConstants.apiKey;
+        return restTemplate.getForObject(apiUrl, String.class);
+    }
 
     @GetMapping("/now/{location}")
     public String now(@PathVariable String location) {
         String apiUrl = weatherConstants.apiUrl + "/current.json?q=" + location;
 
-        RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "&key=" + weatherConstants.apiKey;
-        String response = restTemplate.getForObject(url, String.class);
-
-        return response;
+        return getWeatherData(apiUrl);
     }
 
     @GetMapping("/forecast/{location}/{days}")
     public String forecast(@PathVariable String location, @PathVariable int days) {
         String apiUrl = weatherConstants.apiUrl + "/forecast.json?q=" + location + "&days=" + days;
 
-        RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "&key=" + weatherConstants.apiKey;
-        String response = restTemplate.getForObject(url, String.class);
-
-        return response;
+        return getWeatherData(apiUrl);
     }
 
 }
