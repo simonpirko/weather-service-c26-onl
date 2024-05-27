@@ -1,6 +1,7 @@
 package by.tms.weatherservicec26onl.controller;
 
 
+import by.tms.weatherservicec26onl.serialization.WeatherResponse;
 import by.tms.weatherservicec26onl.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +17,13 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/now/{location}")
-    public String now(@PathVariable String location) {
-        String apiUrl = weatherService.createUrl("/current.json", "q", location);
-        return weatherService.getWeatherData(apiUrl);
+    public WeatherResponse now(@PathVariable String location) {
+        return weatherService.getWeatherData(location);
     }
 
     @GetMapping("/forecast/{location}/{days}")
-    public String forecast(@PathVariable String location, @PathVariable String days) {
-        String apiUrl = weatherService.createUrl("/forecast.json", "q", location, "days", days);
-        return weatherService.getWeatherData(apiUrl);
+    public WeatherResponse forecast(@PathVariable String location, @PathVariable String days) {
+        return weatherService.getWeatherData(location, days);
     }
 
 }
