@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WeatherServiceC26OnlApplicationTests {
+class WeatherControllerServiceC26OnlApplicationTests {
 
     @Test
     void contextLoads() {
