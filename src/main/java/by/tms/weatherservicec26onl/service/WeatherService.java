@@ -6,7 +6,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
+@AllArgsConstructor
 public class WeatherService {
+  
+    private RestTemplate restTemplate = new RestTemplate();
 
     public String createUrl(String path, String... queryParams) {
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(weatherConstants.apiUrl);
@@ -17,9 +20,13 @@ public class WeatherService {
         return uriBuilder.build().toUriString();
     }
 
-    public String getWeatherData(String url) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(url, String.class);
+    public WeatherResponse getWeatherData(String url) {
+        ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(url, WeatherResponse.class);
+      
+        if (response.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException("Failed to get weather");
+        }
+      
+        return response.getBody();
     }
-
 }
