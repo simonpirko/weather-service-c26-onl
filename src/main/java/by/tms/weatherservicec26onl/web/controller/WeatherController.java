@@ -1,6 +1,6 @@
 package by.tms.weatherservicec26onl.web.controller;
 
-import by.tms.weatherservicec26onl.serialization.WeatherResponse;
+import by.tms.weatherservicec26onl.model.WeatherResponse;
 import by.tms.weatherservicec26onl.service.WeatherService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
