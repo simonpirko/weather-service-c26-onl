@@ -3,20 +3,23 @@ spring:
     name: Weather-Service
   datasource:
     username: postgres
-    password: root
+    password: test
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  flyway:
-    enabled: true
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    locations: classpath:/db_migration
+#  flyway:
+#    enabled: true
+#    url: ${spring.datasource.url}
+#    user: ${spring.datasource.username}
+#    password: ${spring.datasource.password}
+#    locations: classpath:/db_migration
 
 security:
   allow-credentials: true
