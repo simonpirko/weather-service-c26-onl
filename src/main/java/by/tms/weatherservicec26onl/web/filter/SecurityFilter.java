@@ -1,6 +1,6 @@
 package by.tms.weatherservicec26onl.web.filter;
 
-import by.tms.weatherservicec26onl.auth.TokenProvider;
+//import by.tms.weatherservicec26onl.auth.TokenProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.Optional;
-
+/**
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -55,3 +55,4 @@ public class SecurityFilter extends OncePerRequestFilter {
         return bearerToken;
     }
 }
+*/

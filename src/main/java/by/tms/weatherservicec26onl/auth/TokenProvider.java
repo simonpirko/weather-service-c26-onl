@@ -1,4 +1,4 @@
-package by.tms.weatherservicec26onl.auth;
+/**package by.tms.weatherservicec26onl.auth;
 
 import by.tms.weatherservicec26onl.entity.User;
 import by.tms.weatherservicec26onl.properties.JwtProperties;
@@ -73,3 +73,4 @@ public class TokenProvider {
         return builder.compact();
     }
 }
+*/

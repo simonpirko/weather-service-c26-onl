@@ -1,6 +1,6 @@
 package by.tms.weatherservicec26onl.web.controller;
 
-import by.tms.weatherservicec26onl.auth.TokenProvider;
+//import by.tms.weatherservicec26onl.auth.TokenProvider;
 import by.tms.weatherservicec26onl.entity.User;
 import by.tms.weatherservicec26onl.service.NewUserService;
 import lombok.AllArgsConstructor;
@@ -19,15 +19,15 @@ public class NewUserController {
 
     @Autowired
     private NewUserService newUserService;
-    @Autowired
-    private TokenProvider tokenProvider;
+    //@Autowired
+    //private TokenProvider tokenProvider;
 
     @GetMapping("/registration")
     public String reg() {
         return "registration";
     }
 
-    @PostMapping("/registration")
+    /**@PostMapping("/registration")
     public String registration(User user, Model model) {
         try {
             newUserService.add(user);
@@ -39,12 +39,12 @@ public class NewUserController {
             return "registration";
         }
     }
-
+*/
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-
+/**
     @PostMapping("/login")
     public String login(User user, Model model) {
         try {
@@ -57,4 +57,5 @@ public class NewUserController {
             return "login";
         }
     }
+ */
 }
