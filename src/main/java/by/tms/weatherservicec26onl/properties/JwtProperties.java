@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("jwt")
 public class JwtProperties {
-    private Integer ttlMillis;
+    private Integer ttlMillis = 900000;
 }
